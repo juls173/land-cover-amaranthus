@@ -2,8 +2,9 @@ import pandas as pd
 import numpy as np
 import math
 
-def calculate_shannon_index(proportions: np.ArrayLike) -> float:
-    proportions = np.array(proportions) / 100
+def calculate_shannon_index(proportions) -> float:
+    proportions = np.array(proportions, dtype=float)
+    proportions /= 100
 
     sum = 0
     for proportion in proportions:
@@ -11,8 +12,10 @@ def calculate_shannon_index(proportions: np.ArrayLike) -> float:
             sum += proportion * math.log(proportion)
     return -1 * sum
 
-def calculate_simpson_index(proportions: np.ArrayLike) -> float:
-    proportions = np.array(proportions) / 100
+def calculate_simpson_index(proportions) -> float:
+    proportions = np.array(proportions, dtype=float)
+    proportions /= 100
+    
     simpson_index = 1 - (proportions ** 2).sum()
 
     return simpson_index
