@@ -3,6 +3,19 @@ import pandas as pd
 from pyinaturalist import get_observations, Observation
 
 def get_inaturalist_observations(geometry) -> pd.DataFrame:
+    """
+    Retrieves iNaturalist observations of Amaranthus tuberculatus within a specified geographic region.
+
+    This function queries the iNaturalist API for observations of Amaranthus tuberculatus (taxon ID: 75400) 
+    that have open location data. It filters results based on the provided geographic geometry 
+    and returns the data as a pandas DataFrame, and then saves the results to a csv file.
+
+    Args:
+        geometry: A geospatial geometry object defining the area of interest.
+
+    Returns:
+        pd.DataFrame: A DataFrame containing observation dates and locations.
+    """
     response = get_observations(
     taxon_id=75400,       # species ID for Amaranthus tuberculatus
     geoprivacy='open',    # only include observations with open location data
