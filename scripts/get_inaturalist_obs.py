@@ -2,7 +2,7 @@
 import pandas as pd
 from pyinaturalist import get_observations, Observation
 
-def get_inaturalist_observations(geometry) -> pd.DataFrame:
+def get_inaturalist_observations(geometry, taxon_id: int) -> pd.DataFrame:
     """
     Retrieves iNaturalist observations of Amaranthus tuberculatus within a specified geographic region.
 
@@ -17,7 +17,7 @@ def get_inaturalist_observations(geometry) -> pd.DataFrame:
         pd.DataFrame: A DataFrame containing observation dates and locations.
     """
     response = get_observations(
-    taxon_id=75400,       # species ID for Amaranthus tuberculatus
+    taxon_id=taxon_id,       # species ID for Amaranthus tuberculatus
     geoprivacy='open',    # only include observations with open location data
     geoframe=geometry,  
     page='all'
@@ -36,5 +36,5 @@ def get_inaturalist_observations(geometry) -> pd.DataFrame:
     return obs_df
 
 us_bbox = (24.6, -124.8, 49.0, -66.9)
-inat_obs_df = get_inaturalist_observations(us_bbox)
+inat_obs_df = get_inaturalist_observations(us_bbox, taxon_id=75400)
 print(len(inat_obs_df))
