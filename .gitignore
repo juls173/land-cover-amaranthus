@@ -3,3 +3,4 @@ nlcd_data/
 us_il_shapefiles/
 __pycache__/
 processed_rasters/
+crop_data/
