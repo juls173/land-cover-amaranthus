@@ -19,7 +19,7 @@ def get_amaranthus_occurences(bounding_box: str) -> pd.DataFrame:
     hasCoordinate=True,
     limit=1000,
     basisOfRecord="PRESERVED_SPECIMEN",
-    year="2000,2023", # range of years, can narrow down
+    year="1985,2023", # range of years, can narrow down
 )
 
     df = pd.DataFrame(data['results'])
@@ -31,4 +31,4 @@ def get_amaranthus_occurences(bounding_box: str) -> pd.DataFrame:
 il_bbox = "POLYGON((-91.513 36.970, -87.495 36.970, -87.495 42.508, -91.513 42.508, -91.513 36.970))"
 all_bbox = "POLYGON(())"
 df = get_amaranthus_occurences(il_bbox)
-print(df.iloc[:5])
+print(len(df))
